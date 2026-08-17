@@ -12,7 +12,7 @@ int main() {
         char op;
         cin >> op;
 
-        if (op == '#') {
+        if (op == '#') {s
             V = st.top();
             st.pop();
         } else {
