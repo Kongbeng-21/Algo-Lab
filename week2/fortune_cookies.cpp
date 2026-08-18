@@ -1,35 +1,36 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+
 int main() {
-    int n,m;
-    cin >> n >> m;
-    vector<int> bonus(n,0);
-    int current = 0;
-    for (int i=0;i<=m;i++) {
-        int t;
-        cin >> t;
-        if (t==0) {
-            current=0;
-        }
-        else if (t==1) {
-            if (current < bonus.size() -1) {
-                current++;
+    int t;
+    cin >> t;
+    vector<int> cookies;
+
+    for (int i = 0; i < t; i++) {
+        int l;
+        cin >> l;
+
+        if (l == 1) {
+            int k, x;
+            cin >> k >> x;
+            if (k >= cookies.size()) {
+                cookies.push_back(x);
+            } else {
+                cookies.insert(cookies.begin() + k + 1, x);
+            }
+        } else if (l == 2) {
+            int k;
+            cin >> k;
+            if (k <= cookies.size()) {
+                cookies.erase(cookies.begin() + k - 1);
             }
         }
-        else if (t==2) {
-            bonus.insert(bonus.begin()+current+1,0);
-        }
-        else if (t==3) {
-            int x;
-            cin >> x;
-            bonus[current] += x;
-        }
     }
-    for (int b : bonus) {
-        cout << b << " ";
+
+    for (int i = 0; i < cookies.size(); i++) {
+        cout << cookies[i] << endl;
     }
-    cout << endl;
+
     return 0;
 }
-        
